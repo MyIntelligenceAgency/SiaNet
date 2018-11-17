@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Accord.Math;
 
 namespace SiaNet.Examples
 {
@@ -15,6 +16,7 @@ namespace SiaNet.Examples
         private static DataFrameList trainData;
 
         private static Sequential model;
+	    private static CompiledModel compiledModel;
 
         private static Shape featureShape;
         private static Shape labelShape;
@@ -53,14 +55,24 @@ namespace SiaNet.Examples
         public static void Train()
         {
             //model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            var compiledModel = model.Compile();
+            compiledModel = model.Compile();
             compiledModel.EpochEnd += CompiledModel_EpochEnd;
             compiledModel.Fit(trainData, 100, 2, new Model.Optimizers.SGD(), new Model.Metrics.BinaryCrossEntropy(), new Model.Metrics.Accuracy());
         }
 
-        private static void CompiledModel_EpochEnd(object sender, EventArgs.EpochEndEventArgs e)
+	    public static void Predict()
+	    {
+		    var predictions = compiledModel.Predict(trainData.Features);
+		    for (int i = 0; i < trainData.Length; i++)
+		    {
+				Console.WriteLine($@"Data: {trainData.Features[i].ToOctave()}, Label: {trainData.Labels[i].ToOctave()}, Prediction: {predictions[i].ToOctave()}");
+			}
+			
+	    }
+
+		private static void CompiledModel_EpochEnd(object sender, EventArgs.EpochEndEventArgs e)
         {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Acc: {2}", e.Epoch, e.Loss, e.Metric));
+            Console.WriteLine($@"Epoch: {e.Epoch}, Loss: {e.Loss}, Acc: {e.Metric}");
         }
     }
 }

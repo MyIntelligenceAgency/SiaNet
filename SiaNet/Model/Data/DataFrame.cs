@@ -80,7 +80,7 @@
                     nameof(newShape));
             }
 
-            DataShape = new Shape();
+            DataShape = newShape;
         }
 
         /// <summary>

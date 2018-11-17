@@ -31,37 +31,37 @@ namespace SiaNet.Examples
                 XORExample.LoadData();
                 XORExample.BuildModel();
                 XORExample.Train();
-                /*
-                //Housing regression example
-                HousingRegression.LoadData();
-                HousingRegression.BuildModel();
-                HousingRegression.Train();
+                
+                ////Housing regression example
+                //HousingRegression.LoadData();
+                //HousingRegression.BuildModel();
+                //HousingRegression.Train();
 
                 //MNIST Classification example
                 //MNISTClassifier.LoadData();
                 //MNISTClassifier.BuildModel();
                 //MNISTClassifier.Train();
 
-                //Time series prediction
-                TimeSeriesPrediction.LoadData();
-                TimeSeriesPrediction.BuildModel();
-                TimeSeriesPrediction.Train();
+                ////Time series prediction
+                //TimeSeriesPrediction.LoadData();
+                //TimeSeriesPrediction.BuildModel();
+                //TimeSeriesPrediction.Train();
                 
 
-                //Multi variate time series prediction
-                MiltiVariateTimeSeriesPrediction.LoadData();
-                MiltiVariateTimeSeriesPrediction.BuildModel();
-                MiltiVariateTimeSeriesPrediction.Train();
+                ////Multi variate time series prediction
+                //MiltiVariateTimeSeriesPrediction.LoadData();
+                //MiltiVariateTimeSeriesPrediction.BuildModel();
+                //MiltiVariateTimeSeriesPrediction.Train();
 
-                //Cifar-10 Classification example
-                Cifar10Classification.LoadData();
-                Cifar10Classification.BuildModel();
-                Cifar10Classification.Train();
+                ////Cifar-10 Classification example
+                //Cifar10Classification.LoadData();
+                //Cifar10Classification.BuildModel();
+                //Cifar10Classification.Train();
 
-                //Image classification example
-                Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
-                Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
-                */
+                ////Image classification example
+                //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
+                //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
+
 
                 //Object Detection
                 //ObjectDetection.PascalDetection();

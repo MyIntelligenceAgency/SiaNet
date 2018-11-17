@@ -24,13 +24,18 @@ namespace SiaNet.Examples
             Downloader.DownloadSample(SampleDataset.HousingRegression);
             var samplePath = Downloader.GetSamplePath(SampleDataset.HousingRegression);
             frame.ReadCsv(samplePath.Train, true);
-            
-        }
+	        var features = (DataFrame) frame[frame.Columns.Where(c => c != "medv").ToArray()];
+	        var labels = (DataFrame) frame[frame.Columns.Where(c => c == "medv").ToArray()];
+			traintest = new DataFrameList(features, labels);
+			//var xy = frame.SplitXY(14, new[] { 1, 13 });
+			//traintest = xy.SplitTrainTest(0.25);
+
+		}
 
         public static void BuildModel()
         {
-            model = new Sequential(new Shape(10));
-            model.Add(new Dense(dim: 20, activation: new Model.Layers.Activations.ReLU()));
+            model = new Sequential(new Shape(13));
+            model.Add(new Dense(dim: 13, activation: new Model.Layers.Activations.ReLU()));
             model.Add(new Dense(dim: 20, activation: new Model.Layers.Activations.ReLU()));
             model.Add(new Dense(dim: 1));
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace SiaNet.Model.Data
                 {
                     var convertedData = item.ToList().ConvertAll(new Converter<string, float>((s) => {
                         float r = 0;
-                        float.TryParse(s, out r);
+                        float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture,out r);
                         return r;
                     })).ToArray();
 
@@ -52,6 +53,7 @@ namespace SiaNet.Model.Data
                     index = index * DataShape.TotalSize;
                     var data = new float[DataShape.TotalSize];
                     DataList.CopyTo(index, data, 0, data.Length);
+					
                 }
 
                 return frame;
