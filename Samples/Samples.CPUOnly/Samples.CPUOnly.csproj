@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MNISTClassifier.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Samples.GPU\HousingRegression.cs" Link="HousingRegression.cs" />
+    <Compile Include="..\Samples.GPU\MNISTClassifier.cs" Link="MNISTClassifier.cs" />
+    <Compile Include="..\Samples.GPU\XORExample.cs" Link="XORExample.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SiaNet.Core.CPUOnly\SiaNet.Core.CPUOnly.csproj" />
+  </ItemGroup>
+
+</Project>
